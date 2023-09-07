@@ -1,8 +1,6 @@
 import {Router, Request, Response} from "express"
 import { CreateUserController } from "../controllers/user/CreateUserController"
-
-const createUserController = new CreateUserController();
-
+import { AuthUserController } from "../controllers/user/AuthUserController"
 
 const router = Router()
 
@@ -10,8 +8,12 @@ router.get("/test", (req: Request, res: Response) => {
   return res.json({message: "Hello World"})
 })
 
-//User Routes
+const createUserController = new CreateUserController();
+const authUserController = new AuthUserController();
 
-router.post("/users", createUserController.handle)
+//User Routes
+router.post("/users", createUserController.createUser)
+router.post("/session", authUserController.authUser)
+
 
 export {router}

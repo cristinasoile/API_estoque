@@ -47,8 +47,8 @@ model Product {
   category Category @relation(fields: [category_id], references: [id])
   category_id String
 
-  @@map("products")
   items Item[]
+  @@map("products")
 }
 
 model Item {

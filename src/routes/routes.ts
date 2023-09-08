@@ -12,6 +12,7 @@ import { GetCategoryController } from "../controllers/category/GetCategoryContro
 import { RemoveCategoryController } from "../controllers/category/RemoveCategoryController"
 import { CreateProductController } from '../controllers/product/CreateProductController';
 import { EditProductController } from '../controllers/product/EditProductController';
+import { FindProductController } from '../controllers/product/FindProductController';
 
 
 const router = Router()
@@ -47,12 +48,15 @@ router.get("/categories", isAuthenticated, getCategoryController.getCategoory)
 router. delete("/categories/:id", isAuthenticated, removeCategoryController.removeCategory)
 
 //Product Controllers
-
 const createProductController = new CreateProductController();
 const editProductController = new EditProductController();
+const findProductController = new FindProductController();
 
 //Product Routes
 // 'upload.single('file')' configuração para upload da imagem
 router.post("/product", isAuthenticated, upload.single('file'), createProductController.createproduct)
 router.put("/product/:id", isAuthenticated, upload.single('file'), editProductController.updateProduct)
+router.get("/product/:id", isAuthenticated, findProductController.findproduct)
+
+
 export {router}

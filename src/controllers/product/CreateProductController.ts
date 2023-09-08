@@ -1,5 +1,4 @@
 import { CreateProductService } from '../../services/product/CreateProductService';
-import { IProductRequest } from './../../Interfaces/product/IProductRequest';
 import { Request, Response } from "express";
 
 class CreateProductController {

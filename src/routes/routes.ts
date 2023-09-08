@@ -13,6 +13,7 @@ import { RemoveCategoryController } from "../controllers/category/RemoveCategory
 import { CreateProductController } from '../controllers/product/CreateProductController';
 import { EditProductController } from '../controllers/product/EditProductController';
 import { FindProductController } from '../controllers/product/FindProductController';
+import { GetProductController } from '../controllers/product/GetProductController';
 
 
 const router = Router()
@@ -51,12 +52,16 @@ router. delete("/categories/:id", isAuthenticated, removeCategoryController.remo
 const createProductController = new CreateProductController();
 const editProductController = new EditProductController();
 const findProductController = new FindProductController();
+const getProductController = new GetProductController();
 
 //Product Routes
 // 'upload.single('file')' configuração para upload da imagem
-router.post("/product", isAuthenticated, upload.single('file'), createProductController.createproduct)
-router.put("/product/:id", isAuthenticated, upload.single('file'), editProductController.updateProduct)
-router.get("/product/:id", isAuthenticated, findProductController.findproduct)
+router.post("/product", isAuthenticated, upload.single('file'), createProductController.createproduct);
+router.put("/product/:id", isAuthenticated, upload.single('file'), editProductController.updateProduct);
+router.get("/product/:id", isAuthenticated, findProductController.findproduct);
+router.get("/product", isAuthenticated, getProductController.getProduct);
+
+
 
 
 export {router}

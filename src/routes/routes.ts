@@ -1,3 +1,5 @@
+import multer from 'multer';
+import uploadConfig from '../config/multer';
 import {Router, Request, Response} from "express"
 import { CreateUserController } from "../controllers/user/CreateUserController"
 import { AuthUserController } from "../controllers/user/AuthUserController"
@@ -9,7 +11,10 @@ import { EditCategoryController } from "../controllers/category/EditCategoryCont
 import { GetCategoryController } from "../controllers/category/GetCategoryController"
 import { RemoveCategoryController } from "../controllers/category/RemoveCategoryController"
 
+
 const router = Router()
+
+const upload = multer(uploadConfig.upload("./tmp"))
 
 router.get("/test", (req: Request, res: Response) => {
   return res.json({message: "Hello World"})

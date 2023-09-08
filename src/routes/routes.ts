@@ -15,6 +15,7 @@ import { EditProductController } from '../controllers/product/EditProductControl
 import { FindProductController } from '../controllers/product/FindProductController';
 import { GetProductController } from '../controllers/product/GetProductController';
 import { RemoveProductController } from '../controllers/product/RemoveProductController';
+import { ItemController } from '../controllers/item/ItemController';
 
 
 const router = Router()
@@ -64,7 +65,11 @@ router.get("/product/:id", isAuthenticated, findProductController.findproduct);
 router.get("/product", isAuthenticated, getProductController.getProduct);
 router.delete("/product/:id", isAuthenticated, removeProductController.deleteProduct)
 
+//Item Controllers
+const itemController = new ItemController();
 
+//Item Routes
+router.put("/item/:product_id", isAuthenticated, itemController.updateItem);
 
 
 export {router}

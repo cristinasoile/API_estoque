@@ -1,4 +1,4 @@
-import { Payload } from './../Interfaces/user/auth/Payload';
+import { IPayload } from '../Interfaces/user/auth/IPayload';
 import { Request, Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
 
@@ -16,7 +16,7 @@ export function isAuthenticated(req: Request, res: Response, next: NextFunction)
 
   try {
     // Validar se token é válido
-    const { sub } = verify(token, process.env.JWT_SECRET as string) as Payload;
+    const { sub } = verify(token, process.env.JWT_SECRET as string) as IPayload;
     req.user_id = sub;
     return next(); // Continuar a requisição
   } catch (error) {

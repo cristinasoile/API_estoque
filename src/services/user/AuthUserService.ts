@@ -1,10 +1,10 @@
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import prismaClient from "../../prisma";
-import { AuthRequest } from "../../Interfaces/user/auth/AuthRequest";
+import { IAuthRequest } from "../../Interfaces/user/auth/IAuthRequest";
 
 class AuthUSerService {
-  async execute({ email, password }: AuthRequest) {
+  async execute({ email, password }: IAuthRequest) {
 
     // Validar se email e password estão preenchidos
     if (!email) {

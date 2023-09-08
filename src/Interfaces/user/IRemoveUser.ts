@@ -1,4 +1,4 @@
 export interface IRemoveUser {
-  user_id: string
+ id: string
 
 }

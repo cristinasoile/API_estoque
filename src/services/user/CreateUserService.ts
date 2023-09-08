@@ -25,11 +25,13 @@ class CreateUserService {
 
     //criando nosso usuario
     const user = prismaClient.user.create({
+      // data é o que eu quero criar
       data: {
         name: name,
         email: email,
         password : passwordHash
       },
+      // select é o que eu quero que retorne
       select: {
         id: true,
         name: true,

@@ -14,7 +14,7 @@ class FindUserService {
       where: {
         id: id
       },
-      // o select selecio o que eu quero que retorne
+      // o select seleciona o que eu quero que retorne
       select: {
         id: true,
         name: true,

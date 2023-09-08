@@ -14,6 +14,7 @@ import { CreateProductController } from '../controllers/product/CreateProductCon
 import { EditProductController } from '../controllers/product/EditProductController';
 import { FindProductController } from '../controllers/product/FindProductController';
 import { GetProductController } from '../controllers/product/GetProductController';
+import { RemoveProductController } from '../controllers/product/RemoveProductController';
 
 
 const router = Router()
@@ -53,6 +54,7 @@ const createProductController = new CreateProductController();
 const editProductController = new EditProductController();
 const findProductController = new FindProductController();
 const getProductController = new GetProductController();
+const removeProductController = new RemoveProductController();
 
 //Product Routes
 // 'upload.single('file')' configuração para upload da imagem
@@ -60,6 +62,7 @@ router.post("/product", isAuthenticated, upload.single('file'), createProductCon
 router.put("/product/:id", isAuthenticated, upload.single('file'), editProductController.updateProduct);
 router.get("/product/:id", isAuthenticated, findProductController.findproduct);
 router.get("/product", isAuthenticated, getProductController.getProduct);
+router.delete("/product/:id", isAuthenticated, removeProductController.deleteProduct)
 
 
 

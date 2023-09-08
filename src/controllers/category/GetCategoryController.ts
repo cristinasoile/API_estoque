@@ -1,4 +1,3 @@
-import { ICategoryRequest } from '../../Interfaces/category/ICategoryRequest';
 import { Request, Response } from "express";
 import { GetCategoryService } from '../../services/category/GetCategoryService';
 

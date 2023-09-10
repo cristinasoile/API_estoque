@@ -16,6 +16,8 @@ import { FindProductController } from '../controllers/product/FindProductControl
 import { GetProductController } from '../controllers/product/GetProductController';
 import { RemoveProductController } from '../controllers/product/RemoveProductController';
 import { ItemController } from '../controllers/item/ItemController';
+import CreateUserControllertest from '../controllers/CreateUserControllertest';
+import CreateUserService2 from '../services/createUserService2';
 
 
 const router = Router()
@@ -26,14 +28,22 @@ router.get("/test", (req: Request, res: Response) => {
   return res.json({message: "Hello World"})
 })
 
+const userService = new CreateUserService2();
 // User Controllers
+
+// Preciso passar o service para o controller
+const createUserControllertest = new CreateUserControllertest(userService);
+
 const createUserController = new CreateUserController();
 const authUserController = new AuthUserController();
 const findUserController = new FindUserController();
 const removeUserController = new RemoveUserController();
 
 //User Routes
-router.post("/users", createUserController.createUser)
+// router.post("/users", createUserControllertest.createUserController)
+router.post("/users", (req: Request, res: Response) => createUserControllertest.createUserController(req, res))
+
+// router.post("/users", createUserController.createUser)
 router.post("/login", authUserController.authUser)
 router.get("/users/:id", isAuthenticated, findUserController.findUser)
 router.delete("/users/:id", removeUserController.removeUser)
